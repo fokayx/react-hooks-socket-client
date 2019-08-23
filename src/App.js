@@ -6,9 +6,10 @@ import { useImmer } from 'use-immer';
 
 import './index.css';
 
-const Messages = props => props.data.map(m => m[0] !== '' ? (<li><strong>{m[0]}</strong> : <div className="innermsg">{m[1]}</div></li>) : (<li className="update">{m[1]}</li>) );
+let uniqueID = 1;
+const Messages = props => props.data.map(m => m[0] !== '' ? (<li key={uniqueID++}><strong>{m[0]}</strong> : <div className="innermsg">{m[1]}</div></li>) : (<li className="update" key={uniqueID++}>{m[1]}</li>) );
 
-const Online = props => props.data.map(m => <li id={m[0]}>{m[1]}</li>);
+const Online = props => props.data.map(m => <li id={m[0]} key={uniqueID++}>{m[1]}</li>);
 
 export default () => {
   const [id, setId] = useState('');
@@ -39,7 +40,6 @@ export default () => {
         newState.push([people[person].id, people[person].nick]);
       }
       setOnline(draft=>{draft.push(...newState)});
-      console.log(online)
     });
 
     socket.on('add-person', (nick, id) => {
@@ -53,7 +53,7 @@ export default () => {
     });
 
     socket.on('chat message', (nick, message) => {
-      setMessages(draft => {draft.push([nick,message])})
+      setMessages(draft => {draft.push([nick, message])})
     });
   }, 0);
 
@@ -69,7 +69,7 @@ export default () => {
   const handleSend = e => {
     e.preventDefault();
     if(input !== ''){
-      socket.emit('chat message', name, room);
+      socket.emit('chat message', input, room);
       setInput('');
     }
   };
