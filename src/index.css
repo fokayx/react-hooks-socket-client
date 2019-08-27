@@ -11,64 +11,86 @@ button:focus {
 }
 body {
   font: 16px Helvetica, Arial;
+  color: #333;
+}
+section {
+  display: flex;
+  width: 80%;
+  margin: 15px auto 0;
+}
+#chat {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 35px);
 }
 #sendform {
   background: white;
-  padding: 5px;
-  position: fixed;
   bottom: 0;
   width: 100%;
+  margin-bottom: 10px;
 }
-#sendform input {
-  border: solid;
+#sendform form {
+  display: flex;
+}
+input {
+  border: 1px solid #ccc;
   padding: 10px;
   width: 95%;
-  border-radius: 20px;
-  margin-right: 0.25%;
-  border-width: 1px;
+  border-radius: 6px;
+  margin-right: 5px;
 }
-#sendform button {
-  background: rgb(130, 224, 255);
+button {
+  background: #00b900;
   border: none;
   padding: 10px 0 10px 0;
-  border-radius: 20px;
+  border-radius: 6px;
+  color: white;
+  width: 80px;
 }
 #messages {
-  margin-bottom: 45px;
+  margin-bottom: 25px;
   list-style-type: none;
-  height: 95%;
   overflow: scroll;
-  flex: 3;
+  flex: 1;
 }
 #messages li {
-  padding: 5px 10px;
-  padding-left: 30px;
+  padding: 10px 20px;
+  line-height: 22px;
 }
 #messages li:nth-child(odd) {
   background: #eee;
 }
 #online {
-  padding-left: 5px;
-  margin-left: auto;
-  margin-bottom: 45px;
+  padding-left: 15px;
   flex: 1;
   list-style: none;
   overflow: scroll;
 }
 #online li {
-  margin-left: 25px;
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+  color: #999;
 }
 .innermsg {
   padding-left: 20px;
 }
+.update {
+}
 #login {
-  display: "";
   text-align: center;
-  vertical-align: middle;
-  margin-top: 150px;
-  line-height: 3em;
+  margin: 30vh auto;
+  width: 60%;
+}
+#name, #room {
+  width: 40%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
 }
 .update {
   text-align: center;
   vertical-align: middle;
+  color: #00b900;
 }

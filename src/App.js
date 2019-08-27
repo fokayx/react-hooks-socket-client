@@ -75,17 +75,19 @@ export default () => {
   };
 
   return id ? (
-    <section style={{display:'flex', flexDirection:'row'}} >
-      <ul id="messages"><Messages data={messages} /></ul>
-      <ul id="online"> &#x1f310; : <Online data={online} /> </ul>
-      <div id="sendform">
-        <form onSubmit={e => handleSend(e)} style={{display: 'flex'}}>
-            <input id="msg" value={input} onChange={e => setInput(e.target.value.trim())} /><button style={{width:'75px'}} type="submit">Send</button>
-        </form>
+    <section>
+      <div id="chat">
+        <ul id="messages"><Messages data={messages} /></ul>
+        <div id="sendform">
+          <form onSubmit={e => handleSend(e)}>
+              <input id="msg" value={input} onChange={e => setInput(e.target.value.trim())} /><button type="submit">Send</button>
+          </form>
+        </div>
       </div>
+      <ul id="online"> &#x1f310; : <Online data={online} /> </ul>
     </section>
   ) : (
-    <div style={{ textAlign: 'center', margin: '30vh auto', width: '70%' }}>
+    <div id="login">
       <form onSubmit={event => handleSubmit(event)}>
         <input id="name" onChange={e => setNameInput(e.target.value.trim())} required placeholder="What is your name .." /><br />
         <input id="room" onChange={e => setRoom(e.target.value.trim())} placeholder="What is your room .." /><br />
